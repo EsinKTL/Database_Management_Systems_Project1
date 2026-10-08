@@ -1691,369 +1691,623 @@ Bu veri seti, Dünya Bankası (World Bank Group) tarafından küresel ölçekte 
 
 ---
 
+# What a Waste 3.0 – Country Dataset
+
+Bu veri seti, Dünya Bankası (World Bank Group) tarafından yayımlanan **"What a Waste 3.0: Global Snapshot of Solid Waste Management Toward Circularity until 2050"** çalışması kapsamında hazırlanan, ülkelerin katı atık yönetimine ilişkin küresel ölçekteki verilerini içermektedir.
+
+Veri seti; ülkelerin belediye katı atık (MSW) üretimi, atık bileşimi, toplama hizmetleri, bertaraf ve geri dönüşüm yöntemleri, kayıtlı ve kayıt dışı atık sektörü ile atık yönetimine ilişkin yasal ve politik düzenlemeleri hakkında kapsamlı bilgiler sunmaktadır.
+
+---
+
 ## 📁 Veri Dosyası
 
 **Dosya adı:**
 
 ```text
-What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx
+What_a_Waste_3.0_COUNTRY_Dataset_&_Codebook.xlsx
 ```
 
-**Veri kaynağı:**
+**Veri sağlayıcısı:**
 
-World Bank Group – **What a Waste 3.0**
+**World Bank Group – What a Waste 3.0**
 
-Veri seti, dünya genelindeki farklı ülkelerden **262 şehir/veri kaydını** kapsamaktadır.
+**Çalışmanın adı:**
 
----
-
-## 📊 Veri Setinin Yapısı
-
-Excel dosyası toplam **3 çalışma sayfasından (sheet)** oluşmaktadır:
-
-| Çalışma Sayfası | Satır | Sütun | Açıklama                               |
-| --------------- | ----: | ----: | -------------------------------------- |
-| `City dataset`  |   262 |   393 | Ana şehir bazlı veri seti              |
-| `Codebook`      | 9.450 |    56 | Değişkenlerin metadata ve açıklamaları |
-| `Info`          |    76 |     2 | Veri seti hakkında genel bilgiler      |
-
-> `City dataset` sayfasındaki 262 kayıt, başlık satırı hariç veri kayıtlarını ifade etmektedir.
+> What a Waste 3.0: Global Snapshot of Solid Waste Management Toward Circularity until 2050
 
 ---
 
-## 🌍 City Dataset
+# 📊 Dosya Yapısı
 
-`City dataset` çalışma sayfası, dünya genelindeki şehirlerin katı atık yönetimine ilişkin temel veri kaynağıdır.
+Excel dosyası toplam **5 çalışma sayfasından (sheet)** oluşmaktadır.
 
-Toplam **393 değişken** içeren veri setinde şehirlerin demografik özelliklerinden atık üretimine, toplama hizmetlerinden bertaraf yöntemlerine kadar birçok farklı kategori bulunmaktadır.
+| Çalışma Sayfası   |         Satır |   Sütun | Açıklama                                  |
+| ----------------- | ------------: | ------: | ----------------------------------------- |
+| `Info`            |           154 |       4 | Veri seti ve telif/lisans bilgileri       |
+| `Country dataset` |       **218** | **110** | Ana ülke bazlı veri seti                  |
+| `Codebook`        | **1.046.751** |  **19** | Kaynak, metadata ve metodoloji bilgileri  |
+| `EPR Input sheet` |       **220** |  **21** | EPR politikalarına ilişkin girdi verileri |
+| `Lists lookup`    |            65 |       7 | Bölge kodları ve yardımcı veri tabloları  |
 
-### Temel Veri Kategorileri
+> `Country dataset`, veri setinin ana analiz tablosudur ve **110 değişken içeren 218 ülke/veri kaydı** barındırmaktadır.
 
-* Şehir ve ülke bilgileri
-* Nüfus ve demografik göstergeler
-* Atık üretimi
+---
+
+# 🌍 Country Dataset
+
+`Country dataset` sayfası, ülkelerin katı atık yönetimi performanslarını ve mevcut durumlarını karşılaştırmak için kullanılan ana veri tablosudur.
+
+Toplam **110 sütun** içerisinde aşağıdaki temel kategoriler bulunmaktadır:
+
+* Ülke kimliği ve demografik bilgiler
+* Nüfus ve nüfus projeksiyonları
+* GDP ve gelir grubu
+* Belediye katı atık üretimi
+* Atık üretimi projeksiyonları
 * Atık bileşimi
+* MSW dışındaki atık türleri
 * Atık toplama hizmetleri
-* Atık taşıma ve transfer
-* Geri dönüşüm
-* Kompostlama
-* Bertaraf yöntemleri
-* Kayıt dışı atık sektörü
-* Atık yönetimi iş gücü
-* Finansal göstergeler
-* Yönetimsel ve kurumsal bilgiler
+* Atık işleme ve bertaraf yöntemleri
+* Toplanamayan atıkların akıbeti
+* Formal ve informal atık sektörü
+* Plastik atık politikaları
+* Extended Producer Responsibility (EPR)
+* Deposit Return System (DRS)
 
 ---
 
-# 🏙️ Veri Değişkenleri
+# 1. 🌐 Ülke Kimliği ve Demografik Bilgiler
 
-## 1. Kimlik ve Demografi
-
-Şehir ve ülkeye ilişkin temel tanımlayıcı bilgiler bu kategoride bulunmaktadır.
-
-Örnek değişkenler:
-
-```text
-country_code
-iso3c
-region_id
-country_name
-income_id
-income_id_2022
-city_name
-city_code
-population_number_of_people
-population_number_of_people_UN
-```
-
-Bu değişkenler kullanılarak şehirler;
-
-* ülkeye,
-* bölgeye,
-* gelir grubuna,
-* şehir koduna,
-* nüfusa
-
-göre sınıflandırılabilir.
-
----
-
-## 2. Belediye Katı Atık Üretimi
-
-Şehirlerde oluşan toplam belediye katı atık miktarını ve kişi başına düşen atık üretimini ifade eder.
-
-Önemli değişkenler:
-
-```text
-msw_total_msw_generated_tons_per_year
-msw_total_msw_generated_kg_per_cap_per_day
-msw_total_msw_generation_year
-```
-
-Bu değişkenler sayesinde:
-
-* yıllık toplam atık üretimi,
-* kişi başına günlük atık üretimi,
-* atık verisinin ait olduğu yıl
-
-analiz edilebilir.
-
-Örneğin `msw_total_msw_generated_kg_per_cap_per_day`, bir kişinin ortalama olarak günde ne kadar belediye katı atık ürettiğini kilogram cinsinden gösterir.
-
----
-
-## 3. Atık Bileşimi
-
-Bu kategori, belediye katı atığının hangi malzemelerden oluştuğunu gösterir.
+Bu kategoride ülkelerin temel tanımlayıcı ve ekonomik göstergeleri bulunmaktadır.
 
 Başlıca değişkenler:
 
 ```text
-composition_msw_food_organic_waste_percent
-composition_msw_plastic_percent
-composition_msw_paper_cardboard_percent
-composition_msw_glass_percent
-composition_msw_metal_percent
-composition_msw_hazardous_percent
-composition_msw_weee_percent
+Country code
+Country name
+Region
+Income group
+GDP
+Population
 ```
 
-Bu veriler sayesinde şehirlerin atık profilleri karşılaştırılabilir.
+Bu bilgiler kullanılarak ülkeler;
+
+* Dünya Bankası bölgesine,
+* gelir grubuna,
+* nüfus büyüklüğüne,
+* ekonomik göstergelerine
+
+göre sınıflandırılabilir.
+
+Ayrıca veri setinde farklı yıllara ilişkin nüfus bilgileri ve projeksiyonları bulunmaktadır.
+
+Özellikle:
+
+```text
+Population – reported year
+Population – 2022
+Population – 2030
+Population – 2040
+Population – 2050
+```
+
+gibi veriler, uzun vadeli atık üretimi projeksiyonlarında kullanılabilir.
+
+---
+
+# 2. 🗑️ Belediye Katı Atık Üretimi
+
+Veri setinin temel bileşenlerinden biri ülkelerin **Municipal Solid Waste (MSW)** üretim miktarlarıdır.
+
+Başlıca değişkenler:
+
+```text
+MSW generation (t/y)
+MSW generation (kg/capita/day)
+```
+
+Bu değişkenler:
+
+* yıllık toplam belediye katı atık üretimini,
+* kişi başına günlük atık üretimini
+
+göstermektedir.
+
+### Yıllık Atık Üretimi
+
+`MSW generation (t/y)` ülkenin yıllık toplam belediye katı atık üretimini ton/yıl cinsinden ifade eder.
+
+### Kişi Başına Atık Üretimi
+
+`MSW generation (kg/capita/day)` bir kişinin ortalama olarak günde ürettiği belediye katı atığı kilogram cinsinden gösterir.
+
+Bu değişken, nüfus büyüklüğünden bağımsız olarak ülkelerin atık üretim yoğunluğunu karşılaştırmak için özellikle önemlidir.
+
+---
+
+# 3. 📈 MSW Üretim Projeksiyonları
+
+Veri seti yalnızca mevcut veya raporlanmış atık üretimini değil, gelecekteki atık üretimine ilişkin projeksiyonları da içermektedir.
+
+Başlıca projeksiyon yılları:
+
+```text
+2022
+2030
+2040
+2050
+```
 
 Örneğin:
 
-* Organik atık oranı
-* Plastik oranı
-* Kağıt/karton oranı
-* Cam oranı
-* Metal oranı
-* Tehlikeli atık oranı
-* Elektronik atık oranı
+```text
+MSW generation - projected 2022
+MSW generation - projected 2030
+MSW generation - projected 2040
+MSW generation - projected 2050
+```
 
-gibi göstergeler analiz edilebilir.
+değişkenleri kullanılarak ülkelerin gelecekteki katı atık üretimindeki değişim incelenebilir.
+
+Bu veriler özellikle **2050'ye kadar sürdürülebilir katı atık yönetimi ve döngüsel ekonomi** senaryolarının değerlendirilmesinde kullanılabilir.
 
 ---
 
-## 4. Atık Toplama Hizmetleri
+# 4. ♻️ Atık Bileşimi
 
-Şehirlerdeki atık toplama hizmetlerinin kapsamını gösterir.
+Atık bileşimi değişkenleri, belediye katı atığının hangi malzemelerden oluştuğunu yüzde ağırlık olarak göstermektedir.
 
-Önemli değişkenler:
+Başlıca kategoriler:
 
 ```text
-waste_collection_coverage_total_percent_of_population
-waste_collection_coverage_total_percent_of_geographical_area
-waste_uncollected_percent
+Food
+Glass
+Metal
+Paper
+Plastic
+Wood
+Textiles
+Diapers
+Organic
 ```
 
-Bu değişkenler kullanılarak;
+Ayrıca plastik atıkları daha ayrıntılı incelemek için:
 
-* nüfusun ne kadarına atık toplama hizmeti ulaştığı,
-* coğrafi alanın ne kadarının kapsandığı,
-* toplanamayan atık oranı
+```text
+Rigid plastic
+Flexible plastic
+```
 
-incelenebilir.
+değişkenleri bulunmaktadır.
+
+Bu değişkenler sayesinde ülkelerin atık profilleri karşılaştırılabilir.
+
+Örneğin:
+
+* Plastik ağırlıklı atık profiline sahip ülkeler,
+* Organik atık oranı yüksek ülkeler,
+* Kağıt/karton oranı yüksek ülkeler,
+* Cam ve metal oranları
+
+ayrı ayrı analiz edilebilir.
 
 ---
 
-## 5. Atık Bertarafı ve Arıtma
+# 5. 🏭 MSW Dışı Atıklar
 
-Toplanan atıkların hangi yöntemlerle işlendiğini veya bertaraf edildiğini gösterir.
+Veri seti belediye katı atığının yanı sıra farklı sektörlerden kaynaklanan atıklara ilişkin bilgiler de içermektedir.
 
-Örnek değişkenler:
+Başlıca kategoriler:
 
 ```text
-waste_treatment_controlled_landfill_percent
-waste_treatment_sanitary_landfill_landfill_gas_system_percent
-waste_treatment_recycling_percent
-waste_treatment_composting_percent
-waste_treatment_open_dump_percent
+Agricultural
+Construction
+Hazardous
+Industrial
+Mining
+Medical
 ```
 
-Bu değişkenlerle şehirlerin atık yönetimindeki;
+Bu veriler ton/yıl cinsinden değerlendirilebilir.
 
-* düzenli depolama,
-* kontrollü depolama,
-* biyogaz sistemli sıhhi depolama,
-* geri dönüşüm,
-* kompostlama,
-* vahşi depolama
+Böylece ülkelerin yalnızca belediye kaynaklı değil, aynı zamanda;
 
-oranları karşılaştırılabilir.
+* tarımsal,
+* inşaat ve yıkıntı,
+* tehlikeli,
+* endüstriyel,
+* madencilik,
+* tıbbi
+
+atık yükleri de incelenebilir.
 
 ---
 
-## 6. Kayıt Dışı Sektör
+# 6. 🚛 Atık Toplama Hizmeti Kapsamı
 
-Veri seti, katı atık yönetimindeki kayıt dışı çalışanlara ilişkin çeşitli göstergeler de içermektedir.
+Veri seti ülkelerdeki atık toplama hizmetlerinin kapsayıcılığı hakkında bilgiler sağlamaktadır.
 
-Önemli değişkenler:
+Toplama kapsamı;
+
+* kırsal,
+* kentsel,
+* toplam
+
+alanlarda değerlendirilmektedir.
+
+Örnek değişken kategorileri:
 
 ```text
-informal_sector_total_informal_waste_workers_number
-informal_sector_percent_waste_collected_by_informal_sector_percent
+Collection coverage - rural
+Collection coverage - urban
+Collection coverage - total
 ```
 
-Bu değişkenler;
+Ölçümler farklı göstergeler üzerinden verilebilir:
 
-* kayıt dışı atık işçisi sayısını,
-* kayıt dışı sektör tarafından toplanan atık oranını
+```text
+% population
+% households
+% weight
+```
 
-incelemek için kullanılabilir.
+Bu bilgiler kullanılarak ülkelerin atık toplama altyapısının erişim düzeyi karşılaştırılabilir.
+
+---
+
+# 7. 🏞️ Atık İşleme ve Bertaraf
+
+Toplanan belediye katı atıklarının hangi yöntemlerle işlendiğini veya bertaraf edildiğini gösteren değişkenler bulunmaktadır.
+
+Başlıca yöntemler:
+
+```text
+Open dump
+Sanitary landfill
+Composting
+Recycling
+Incineration
+MBT
+RDF
+```
+
+### Open Dump
+
+Atıkların uygun mühendislik ve çevresel kontrol mekanizmaları bulunmayan vahşi depolama alanlarına bırakılmasını ifade eder.
+
+### Sanitary Landfill
+
+Atıkların kontrollü ve mühendislik esaslarına uygun düzenli depolama sahalarında bertaraf edilmesini ifade eder.
+
+### Composting
+
+Organik atıkların biyolojik süreçlerle komposta dönüştürülmesini ifade eder.
+
+### Recycling
+
+Atıkların geri kazanılarak yeniden kullanılabilir hammaddeye dönüştürülmesini ifade eder.
+
+### Incineration
+
+Atıkların kontrollü yakma tesislerinde işlenmesini ifade eder.
+
+### MBT
+
+**Mechanical Biological Treatment (Mekanik Biyolojik Arıtma)** süreçlerini ifade eder.
+
+### RDF
+
+**Refuse-Derived Fuel**, yani atıklardan türetilmiş yakıt üretimini ifade eder.
+
+---
+
+# 8. ⚠️ Toplanamayan Atıkların Akıbeti
+
+Atık toplama hizmetinin ulaşmadığı veya toplanamayan atıkların nasıl bertaraf edildiğine ilişkin göstergeler de veri setinde bulunmaktadır.
+
+Örneğin:
+
+* Yakılarak imha edilmesi
+* Araziye dökülmesi
+* Gömülmesi
+* Su ortamına bırakılması
+
+gibi farklı akıbetler değerlendirilebilir.
+
+Bu veriler özellikle atık toplama altyapısının yetersiz olduğu bölgelerin çevresel risklerinin incelenmesinde kullanılabilir.
+
+---
+
+# 9. 👷 Formal ve Informal Atık Sektörü
+
+Veri seti atık yönetiminde çalışan insanların sosyal ve ekonomik boyutunu da kapsamaktadır.
+
+Başlıca göstergeler:
+
+```text
+Formal waste workers
+Informal waste workers
+```
+
+Ayrıca kayıt dışı çalışanlar için;
+
+* toplam çalışan sayısı,
+* kadın çalışanlar,
+* çocuk çalışanlar
+
+gibi kırılımlar bulunabilmektedir.
+
+Bu bilgiler, atık yönetim sisteminin yalnızca teknik değil, aynı zamanda **sosyal ve ekonomik boyutunun** incelenmesine olanak sağlar.
+
+---
+
+# 10. ⚖️ Plastik Atık Mevzuatı ve Politikaları
+
+Veri seti ülkelerin plastik atık yönetimine ilişkin yasal ve politik yapılarını da içermektedir.
+
+Örneğin:
+
+```text
+Existence of national law / policy for plastic waste
+```
+
+değişkenleri kullanılarak ülkelerde plastik atık yönetimine ilişkin ulusal bir yasa veya politikanın bulunup bulunmadığı incelenebilir.
+
+Bu veriler sayesinde:
+
+* mevzuatın mevcut olup olmadığı,
+* ülkelerin plastik atık politikaları,
+* farklı politika yaklaşımları
+
+karşılaştırılabilir.
+
+---
+
+# 11. ♻️ Extended Producer Responsibility (EPR)
+
+**Extended Producer Responsibility (EPR)**, Türkçe adıyla **Genişletilmiş Üretici Sorumluluğu**, üreticilerin ürünlerinin kullanım ömrü sonrasındaki atık yönetiminden belirli ölçüde sorumlu tutulduğu politika yaklaşımıdır.
+
+Veri setinde farklı atık türleri için EPR sistemlerine ilişkin bilgiler bulunmaktadır.
+
+Örneğin:
+
+```text
+Packaging
+WEEE
+Batteries
+Other waste streams
+```
+
+EPR sistemlerinin;
+
+* mevcut olup olmadığı,
+* zorunlu veya gönüllü olup olmadığı,
+* uygulama durumu,
+* kapsamı
+
+gibi özellikleri incelenebilir.
+
+---
+
+# 12. 🥤 Deposit Return System (DRS)
+
+**Deposit Return System (DRS)**, Türkçe adıyla **Depozito İade Sistemi**, özellikle içecek ambalajlarının geri toplanmasını teşvik etmek amacıyla kullanılan bir sistemdir.
+
+Veri setinde:
+
+```text
+Existence of DRS for beverage containers
+```
+
+gibi değişkenler aracılığıyla ülkelerde içecek ambalajlarına yönelik depozito sistemlerinin bulunup bulunmadığı ve kapsamı değerlendirilebilir.
 
 ---
 
 # 📖 Codebook
 
-`Codebook` çalışma sayfası, `City dataset` içerisindeki değişkenlerin ayrıntılı açıklamalarını içeren metadata bölümüdür.
+`Codebook` çalışma sayfası, veri setindeki değişkenlerin kaynaklarını ve metodolojik bilgilerini içeren metadata tablosudur.
 
 Toplam:
 
-* **9.450 satır**
-* **56 sütun**
+* **1.046.751 satır**
+* **19 sütun**
 
 bulunmaktadır.
 
-Codebook içerisinde değişkenlerin;
+Codebook içerisinde verilerin;
 
-* tanımları,
-* veri kaynakları,
-* ölçüm yöntemleri,
-* birimleri,
-* açıklamaları,
-* notları,
-* veri toplama bilgileri
+* hangi kaynaklardan toplandığı,
+* kullanılan ölçüm yöntemleri,
+* kaynak sayfa referansları,
+* veri açıklamaları,
+* metodolojik bilgiler
 
-gibi metadata bilgileri yer almaktadır.
+gibi ayrıntıları bulunmaktadır.
 
-Ana veri setindeki herhangi bir değişkenin anlamını ve nasıl yorumlanması gerektiğini anlamak için `Codebook` sayfasının kullanılması önerilir.
+Ana veri setindeki bir değişken analiz edilmeden önce ilgili değişkenin **Codebook içerisindeki tanımının ve veri kaynağının incelenmesi önerilir.**
+
+---
+
+# ♻️ EPR Input Sheet
+
+`EPR Input sheet`, ülkelerin **Extended Producer Responsibility (EPR)** sistemlerine ilişkin ayrıntılı girdi verilerini içermektedir.
+
+| Özellik | Değer |
+| ------- | ----: |
+| Satır   |   220 |
+| Sütun   |    21 |
+
+Bu çalışma sayfası özellikle EPR sistemlerinin ülke bazında değerlendirilmesi ve karşılaştırılması için kullanılabilir.
+
+---
+
+# 🔎 Lists Lookup
+
+`Lists lookup`, veri setinde kullanılan yardımcı bilgileri içeren çalışma sayfasıdır.
+
+| Özellik | Değer |
+| ------- | ----: |
+| Satır   |    65 |
+| Sütun   |     7 |
+
+Bu sayfada özellikle;
+
+* bölge kodları,
+* veri yönetimiyle ilgili yardımcı bilgiler,
+* lookup/reference değerleri
+
+bulunmaktadır.
 
 ---
 
 # ℹ️ Info
 
-`Info` çalışma sayfası, veri setine ilişkin genel bilgi ve açıklamaları içermektedir.
+`Info` çalışma sayfası veri setinin genel tanımı ve telif/lisans bilgilerini içermektedir.
 
-Toplam:
+| Özellik | Değer |
+| ------- | ----: |
+| Satır   |   154 |
+| Sütun   |     4 |
 
-* **76 satır**
-* **2 sütun**
-
-bulunmaktadır.
-
-Bu sayfa, veri setinin kapsamı ve yapısı hakkında ek bilgi sağlamak amacıyla kullanılabilir.
+Veri setinin kullanımında bu sayfadaki lisans ve kaynak bilgilerinin dikkate alınması gerekir.
 
 ---
 
-# 🔎 Veri Seti ile Yapılabilecek Analizler
+# 📈 Veri Seti ile Yapılabilecek Analizler
 
-Bu veri seti farklı şehirlerin katı atık yönetimi performanslarını karşılaştırmak için kullanılabilir.
+Bu veri seti farklı ülkelerin katı atık yönetim sistemlerini karşılaştırmak için kullanılabilir.
 
-Örneğin:
+### Atık Üretimi
 
-### Atık Üretimi Analizi
+Ülkelerin kişi başına günlük atık üretimleri karşılaştırılabilir.
 
-Şehirlerin kişi başına günlük atık üretimleri karşılaştırılabilir.
+### Nüfus ve Atık İlişkisi
 
-```text
-msw_total_msw_generated_kg_per_cap_per_day
-```
+Nüfus büyüklüğü ile yıllık MSW üretimi arasındaki ilişki incelenebilir.
 
-üzerinden şehirler düşükten yükseğe sıralanabilir.
+### Gelir Grubu Analizi
+
+Ülkeler gelir gruplarına ayrılarak atık üretim ve yönetim göstergeleri karşılaştırılabilir.
 
 ### Atık Bileşimi Analizi
 
-Şehirlerdeki plastik, organik, cam, metal ve kağıt oranları karşılaştırılabilir.
+Plastik, organik, cam, metal, kağıt ve tekstil gibi atık türlerinin ülkelere göre dağılımı analiz edilebilir.
 
 ### Geri Dönüşüm Analizi
 
-```text
-waste_treatment_recycling_percent
-```
+Geri dönüşüm oranlarının gelir grubu, nüfus ve atık toplama kapsamıyla ilişkisi incelenebilir.
 
-değişkeni kullanılarak şehirlerin geri dönüşüm oranları incelenebilir.
+### Bertaraf Yöntemleri
 
-### Atık Toplama Analizi
+Düzenli depolama, vahşi depolama, yakma, kompostlama ve geri dönüşüm yöntemlerinin ülkeler arasındaki dağılımı analiz edilebilir.
 
-Atık toplama hizmetinin nüfusun ne kadarına ulaştığı analiz edilebilir.
+### 2050 Atık Projeksiyonu
 
-### Bertaraf Yöntemleri Analizi
+2022–2050 arasındaki atık üretim projeksiyonları kullanılarak gelecekteki atık yükü tahmin edilebilir.
 
-Şehirlerin düzenli depolama, vahşi depolama, geri dönüşüm ve kompostlama gibi yöntemleri hangi oranlarda kullandığı karşılaştırılabilir.
+### EPR ve DRS Analizi
 
-### Gelir Grubu Karşılaştırması
-
-Şehirler Dünya Bankası gelir gruplarına göre gruplanarak atık üretimi ve yönetimi arasındaki ilişkiler incelenebilir.
+Ülkelerin EPR ve DRS politikalarının atık yönetimi göstergeleriyle ilişkisi araştırılabilir.
 
 ---
 
-# 📌 Örnek Araştırma Soruları
+# 🔬 Örnek Araştırma Soruları
 
 Bu veri seti kullanılarak aşağıdaki araştırma soruları incelenebilir:
 
-1. Kişi başına günlük atık üretimi şehirlerin gelir gruplarına göre değişiyor mu?
-2. Atık toplama kapsamı ile geri dönüşüm oranı arasında bir ilişki var mı?
-3. Hangi şehirlerde plastik atık oranı daha yüksek?
-4. Organik atık oranı yüksek olan şehirlerde kompostlama oranı da yüksek mi?
-5. Gelir grupları ile atık bertaraf yöntemleri arasında ilişki var mı?
-6. Atık toplama hizmeti düşük olan şehirlerde toplanamayan atık oranı nasıl değişiyor?
-7. Kayıt dışı sektörün atık toplamadaki rolü şehirler arasında nasıl farklılaşıyor?
-8. Nüfus büyüklüğü ile toplam yıllık MSW üretimi arasında nasıl bir ilişki bulunuyor?
-9. Geri dönüşüm oranı yüksek şehirlerin ortak özellikleri nelerdir?
-10. Farklı bölgelerdeki şehirlerin atık bileşimleri nasıl farklılaşmaktadır?
+1. Ülkelerin gelir grupları kişi başına günlük MSW üretimini etkiliyor mu?
+2. Nüfus ile yıllık MSW üretimi arasında nasıl bir ilişki vardır?
+3. Gelir gruplarına göre geri dönüşüm oranları değişiyor mu?
+4. Plastik atık oranı yüksek ülkelerde EPR sistemlerinin bulunma olasılığı daha yüksek mi?
+5. DRS uygulayan ülkelerde geri dönüşüm göstergeleri nasıl farklılaşmaktadır?
+6. Atık toplama kapsamı ile açık/vahşi depolama oranı arasında ilişki var mı?
+7. 2022–2050 döneminde hangi ülkelerde atık üretiminin en fazla artması beklenmektedir?
+8. Organik atık oranı yüksek ülkelerde kompostlama oranı da yüksek mi?
+9. EPR sistemlerinin zorunlu olduğu ülkeler ile gönüllü olduğu ülkeler arasında atık yönetimi performansı açısından fark var mı?
+10. Kayıt dışı atık sektörünün büyüklüğü ile geri dönüşüm oranı arasında ilişki bulunuyor mu?
 
 ---
 
-# 🧮 Veri Analizi İçin Önerilen Değişkenler
+# 📊 Önerilen Temel Değişkenler
 
-Özellikle istatistiksel analiz, veri görselleştirme ve makine öğrenmesi çalışmalarında aşağıdaki değişkenler kullanılabilir:
+Analiz ve makine öğrenmesi çalışmalarında aşağıdaki değişkenler özellikle değerlendirilebilir:
 
-| Analiz Alanı       | Önerilen Değişken                                       |
-| ------------------ | ------------------------------------------------------- |
-| Nüfus              | `population_number_of_people`                           |
-| Yıllık atık        | `msw_total_msw_generated_tons_per_year`                 |
-| Kişi başı atık     | `msw_total_msw_generated_kg_per_cap_per_day`            |
-| Organik atık       | `composition_msw_food_organic_waste_percent`            |
-| Plastik            | `composition_msw_plastic_percent`                       |
-| Kağıt/Karton       | `composition_msw_paper_cardboard_percent`               |
-| Cam                | `composition_msw_glass_percent`                         |
-| Metal              | `composition_msw_metal_percent`                         |
-| Toplama kapsamı    | `waste_collection_coverage_total_percent_of_population` |
-| Toplanamayan atık  | `waste_uncollected_percent`                             |
-| Geri dönüşüm       | `waste_treatment_recycling_percent`                     |
-| Kompostlama        | `waste_treatment_composting_percent`                    |
-| Vahşi depolama     | `waste_treatment_open_dump_percent`                     |
-| Kayıt dışı çalışan | `informal_sector_total_informal_waste_workers_number`   |
+| Analiz Alanı       | Değişken                                               |
+| ------------------ | ------------------------------------------------------ |
+| Ülke               | `Country name`                                         |
+| Bölge              | `Region`                                               |
+| Gelir grubu        | `Income group`                                         |
+| GDP                | `GDP`                                                  |
+| Nüfus              | `Population`                                           |
+| Yıllık MSW         | `MSW generation (t/y)`                                 |
+| Kişi başı MSW      | `MSW generation (kg/capita/day)`                       |
+| Gıda               | `Composition - food`                                   |
+| Plastik            | `Composition - plastic`                                |
+| Kağıt              | `Composition - paper`                                  |
+| Cam                | `Composition - glass`                                  |
+| Metal              | `Composition - metal`                                  |
+| Tekstil            | `Composition - textiles`                               |
+| Kırsal toplama     | `Collection coverage - rural`                          |
+| Kentsel toplama    | `Collection coverage - urban`                          |
+| Toplam toplama     | `Collection coverage - total`                          |
+| Geri dönüşüm       | `Treatment - recycling`                                |
+| Kompostlama        | `Treatment - composting`                               |
+| Düzenli depolama   | `Treatment - sanitary landfill`                        |
+| Vahşi depolama     | `Treatment - open dump`                                |
+| Yakma              | `Treatment - incineration`                             |
+| Kayıtlı çalışan    | `Formal waste workers`                                 |
+| Kayıt dışı çalışan | `Informal waste workers`                               |
+| Plastik mevzuatı   | `Existence of national law / policy for plastic waste` |
+| EPR                | `Existence of EPR system`                              |
+| DRS                | `Existence of DRS for beverage containers`             |
 
 ---
 
 # 🛠️ Kullanım Alanları
 
-Veri seti aşağıdaki çalışmalarda kullanılabilir:
+Bu veri seti aşağıdaki alanlarda kullanılabilir:
 
 * Veri analizi
 * İstatistiksel analiz
 * Veri görselleştirme
-* Şehirler arası karşılaştırma
 * Çevresel sürdürülebilirlik araştırmaları
-* Katı atık yönetimi araştırmaları
-* Makine öğrenmesi modelleri
-* Tahminleme çalışmaları
-* Korelasyon ve regresyon analizleri
-* Bölgesel karşılaştırmalar
-* Atık yönetimi politikalarının değerlendirilmesi
+* Katı atık yönetimi
+* Döngüsel ekonomi araştırmaları
+* Çevre mühendisliği
+* Şehir ve bölge planlama
+* Kamu politikası analizi
+* EPR ve DRS politika analizi
+* Makine öğrenmesi
+* Regresyon ve korelasyon analizleri
+* Tahminleme ve projeksiyon çalışmaları
+* Ülkeler arası karşılaştırmalı analizler
 
 ---
 
-# 📂 Dosya Organizasyonu
+# ⚠️ Veri Analizi Sırasında Dikkat Edilmesi Gerekenler
 
-Önerilen proje yapısı:
+Veri seti analiz edilirken aşağıdaki hususlar dikkate alınmalıdır:
+
+* Eksik değerler analizden önce kontrol edilmelidir.
+* Değişkenlerin birimleri Codebook üzerinden doğrulanmalıdır.
+* Her değişkenin ait olduğu yıl kontrol edilmelidir.
+* Farklı yıllara ait veriler doğrudan karşılaştırılmadan önce zaman boyutu dikkate alınmalıdır.
+* Nüfus ve MSW projeksiyonları mevcut değerlerden ayrı değerlendirilmelidir.
+* Yüzdesel atık bileşimi ve bertaraf değişkenlerinin tanımları Codebook üzerinden kontrol edilmelidir.
+* EPR ve DRS gibi politika değişkenleri yalnızca var/yok şeklinde değerlendirilmeden önce ilgili metadata ve uygulama kapsamı incelenmelidir.
+* Ülkeler arası karşılaştırmalarda gelir grubu ve bölgesel farklılıklar göz önünde bulundurulmalıdır.
+* Kayıt dışı sektör verilerinin kapsamı ve veri toplama yöntemi ülkeden ülkeye farklılık gösterebilir.
+
+---
+
+# 📂 Önerilen Proje Yapısı
 
 ```text
 project/
 │
 ├── data/
-│   └── What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx
+│   └── What_a_Waste_3.0_COUNTRY_Dataset_&_Codebook.xlsx
 │
 ├── README.md
 │
@@ -2062,41 +2316,29 @@ project/
 
 ---
 
-# ⚠️ Veri Kullanımı Hakkında
+# 📜 Lisans ve Atıf
 
-Veri analizi yapılırken özellikle aşağıdaki noktalar dikkate alınmalıdır:
+Veri setinin `Info` sayfasında belirtilen lisans bilgileri dikkate alınmalıdır.
 
-* Eksik değerler analiz öncesinde kontrol edilmelidir.
-* Değişkenlerin birimleri Codebook üzerinden doğrulanmalıdır.
-* Farklı yıllara ait veriler doğrudan karşılaştırılmadan önce veri yılı kontrol edilmelidir.
-* Şehir nüfusu ve atık üretimi gibi değişkenlerde kullanılan veri kaynakları incelenmelidir.
-* Yüzdesel değişkenlerin toplamlarının her şehir için mutlaka %100 olması beklenmemelidir; kategori tanımları ve eksik veriler Codebook üzerinden kontrol edilmelidir.
-* Karşılaştırmalı analizlerde gelir grubu, bölge ve veri yılı gibi bağlamsal değişkenler dikkate alınmalıdır.
+Veri seti **Creative Commons Attribution 4.0 International (CC BY 4.0)** kapsamında sunulmaktadır.
+
+Veri akademik, ticari veya başka bir çalışmada kullanılırken Dünya Bankası ve **What a Waste 3.0** çalışmasının uygun şekilde kaynak gösterilmesi ve ilgili lisans koşullarına uyulması gerekmektedir.
 
 ---
 
-# 📚 Kaynak
+# 📚 Veri Kaynağı
 
-**World Bank Group – What a Waste 3.0**
+**World Bank Group**
 
-Bu veri seti, Dünya Bankası'nın küresel katı atık yönetimi çalışmalarının şehir düzeyindeki verilerini içermektedir.
+**What a Waste 3.0: Global Snapshot of Solid Waste Management Toward Circularity until 2050**
 
-Veri setinin resmi kaynağı ve metodolojik açıklamalar için Dünya Bankası'nın **What a Waste 3.0** çalışmasına başvurulmalıdır.
-
----
-
-## 📄 Lisans ve Atıf
-
-Veri seti akademik veya ticari bir çalışmada kullanılacaksa, veri sağlayıcının güncel kullanım koşulları, lisans bilgileri ve atıf gereklilikleri kontrol edilmelidir.
-
-Kullanılan veri kaynağı çalışmalarda uygun şekilde belirtilmelidir.
+Veri seti; küresel katı atık yönetiminin mevcut durumunu ve gelecekteki gelişimini ülke bazında incelemek amacıyla kullanılabilecek kapsamlı bir veri kaynağıdır.
 
 ---
 
-## 📌 Özet
+# 📌 Özet
 
-`What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx`, dünya genelindeki şehirlerin katı atık yönetimini farklı boyutlarıyla incelemeye olanak sağlayan kapsamlı bir veri setidir.
+`What_a_Waste_3.0_COUNTRY_Dataset_&_Codebook.xlsx`, ülkelerin katı atık yönetimini **üretim, bileşim, toplama, işleme, bertaraf, geri dönüşüm, iş gücü ve politika** boyutlarıyla inceleyen kapsamlı bir Dünya Bankası veri setidir.
 
-**262 şehir/veri kaydı**, **393 ana veri değişkeni**, kapsamlı **metadata/codebook** bilgileri ve ek açıklamalar sayesinde veri seti; şehir bazlı atık üretimi, toplama, geri dönüşüm, bertaraf ve kayıt dışı sektör analizleri için kullanılabilir.
+**218 ülke/veri kaydı**, **110 ana veri değişkeni**, ayrıntılı **Codebook**, **EPR Input sheet** ve yardımcı lookup tabloları sayesinde veri seti hem mevcut katı atık yönetimi durumunun analiz edilmesine hem de **2050'ye yönelik atık üretimi ve sürdürülebilirlik senaryolarının** değerlendirilmesine olanak sağlamaktadır.
 
-Bu veri seti özellikle **veri analizi, sürdürülebilirlik, çevre mühendisliği, şehir planlama, atık yönetimi ve makine öğrenmesi** çalışmalarında değerlendirilebilir.
